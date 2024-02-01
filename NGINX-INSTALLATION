@@ -1,0 +1,7 @@
+You can install nginx via helm by adding nginx repository in your helm environment and then update the repo so that it can update to the newest version of the nginx. so below 
+
+helm add repo <ALIASNAME> https://helm.ngynx.com/stable
+
+helm repo update
+
+helm repo ls
