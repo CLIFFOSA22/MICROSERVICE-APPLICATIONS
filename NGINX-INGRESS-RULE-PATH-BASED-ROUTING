@@ -1,0 +1,49 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: dominionapps.net
+    http:
+      paths:
+      - path: /
+          backend:
+            service:
+              name: springapp-svc
+              port:
+                number: 80
+      - path: /registration
+           backend:
+             service:
+              name: app-svc
+              port:
+                number: 80
+      - path: /account
+           backend:
+             service:
+              name: java-svc
+              port:
+                number: 80
+
+       - path: /account
+           backend:
+             service:
+              name: java-svc
+              port:
+                number: 80
+
+       - path: /transfer
+           backend:
+             service:
+              name: kim-app-svc
+              port:
+                number: 80
+
+       - path: /paybills
+           backend:
+             service:
+              name: osas-app-svc
+              port:
+                number: 80
