@@ -1,7 +1,93 @@
-You can install nginx via helm by adding nginx repository in your helm environment and then update the repo so that it can update to the newest version of the nginx. so below 
+Nginx ingres can be installed in 2 ways. 
+
+1. by adding nginx helm repo to your helm environment and the install nginx
+2. by adding helm repo to your helm environment and the search for nginx chartName and
+then install.
+
+1. You can install nginx via helm by adding nginx helm repository in your helm environment 
+and then update the repo so that it can update to the newest version of the nginx. 
+so below 
+
+ https://helm.ngynx.com/stable           is the nginx  helm repo
+
+to add the nginx ingress helm repo, we run
 
 helm add repo <ALIASNAME> https://helm.ngynx.com/stable
+
+Let the aliasaname be nginx
+
+helm add repo nginx https://helm.ngynx.com/stable
 
 helm repo update
 
 helm repo ls
+
+To install
+
+Before you can install, found out the chartname by running
+
+helm search repo aliasaname
+
+if the aliasname is nginx/nginx-ingress
+
+You can install by running
+
+helm install deploymentName chartname
+
+let us call the  deployment name be nginx if we like. you run
+
+
+helm install nginx nginx/nginx-ingress
+
+2.  The use of helm repo to install nginx
+
+step 1
+
+Add helm repo to your helm environment to be able to install other application using helm chart repo. 
+
+This helm repo by default is below
+
+https://charts.helm.sh/stable
+
+To add the repo to your helm environment, you run
+
+helm add repo aliasName https://charts.helm.sh/stable
+
+Let us called the aliasname webserver. You run
+
+helm add repo webserver https://charts.helm.sh/stable
+
+update the repo by running
+
+helm repo update
+
+To install Nginx Ingress
+
+To install ingress, you need to find the helm chartname for nginx by running
+
+helm search repo webserver 
+
+helm search repo webserver | grep nginx
+
+If it is webserver/nginx-ingress  that came out as the chartName, you can now install nginx 
+by running
+
+helm install deploymentName chartName
+
+let us call the deployName to be  nginx
+
+helm install nginx webserver/nginx-ingress
+
+What ever you get as a chartName, you can run the below command to install nginx by running
+
+ANOTHER WAY
+You can also deploy nginx ingress by adding nginx helmm repo directly in your helm enrionment 
+as below
+
+https://helm.nginx.com/stable
+
+helm repo add nginx https://helm.nginx.com/stable
+
+helm repo add nginx https://helm.nginx.com/stable
+
+helm repo update
