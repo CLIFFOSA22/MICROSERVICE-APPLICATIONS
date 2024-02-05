@@ -25,13 +25,13 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: mylandmarktech/maven-web-app
+        image: mylandmarktech/hello
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         livenessProbe:
           httpGet:
-            path: /maven-web-app
-            port: 8080
+            path: /hello
+            port: 80
           initialDelaySeconds: 5
           periodSeconds: 5
 ---
@@ -43,7 +43,7 @@ spec:
   selector:
      app: myapp
   ports:
-  - targetPort: 8080
+  - targetPort: 80
     port: 80
 ---
 
@@ -149,7 +149,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: java
+    app: fe
   ports:
   - port: 80
     targetPort: 8080
