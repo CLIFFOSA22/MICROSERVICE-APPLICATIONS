@@ -11,8 +11,6 @@ spec:
   - host: springapp.dominionapps.net
     http:
       paths:
-      - pathType: Prefix
-        path: /
         backend:
           service:
             name: springapp
@@ -21,8 +19,6 @@ spec:
   - host: app.dominionapps.net
     http:
       paths:
-      - pathType: Prefix
-        path: /maven-web-app
         backend:
           service:
             name: appsvc
@@ -31,8 +27,6 @@ spec:
   - host: java.dominionapps.net
     http:
       paths:
-      - pathType: Prefix
-        path: /java-web-app
         backend:
           service:
             name: javasvc
