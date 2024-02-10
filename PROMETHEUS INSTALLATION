@@ -1,0 +1,54 @@
+Let us also add prometheus helm-chert repo in our helm environment
+
+prometheus helm-chart repo  is 
+
+https://prometheus-community.github.io/helm-charts
+
+To we run
+
+ helm repo add aliasname prometheousRepoUrl
+
+ let us called aliasname prometheus
+
+helm repo add prometheus https://prometheus-community.github.io/helm-charts
+
+the run   
+
+helm repo update
+
+Before you can install any 3rd party application suing him, you have to know that chartname of the application in helm. You can achieve this by running
+
+helm search repoName | grep applicationName  
+
+or
+
+helm search repoName | grep applicationComponentName
+
+Prometheus has so many charts or components that can be installed once you run the install command and based on the fact that we use prometheus 
+for application performance monitory, we may not need all the components to monitor our server. We may need some of the components.
+
+This is why prof gave us a prometheus-alertmanager file which has been forked in my github.
+
+Since we want to install prometheus-alertmanager prof has configured, let us copy and save the file in our helm environement and name the file  alert.yml
+
+we would have to found the chartname for prometheus-alertmanager  by running
+
+helm search repoName | grep applicationComponentName
+
+reponame was prometheus
+
+helm search prometheus | prometheus-alertmanager
+
+You will see  a chartname called   prometheus/prometheus-alertmanager  under  chart
+
+chartname = prometheus/prometheus-alertmanager
+
+we can now install or deply prometheus b y ruunning
+
+helm install deploymentName chartname -f fileName
+
+let us called the deploy name as apm. it can be any name
+
+helm install apm prometheus/prometheus-alertmanager -f alert.yml
+
+The alertmanager file will install prometheus-alertmanager, prometheus-server and others after you run the above command.
