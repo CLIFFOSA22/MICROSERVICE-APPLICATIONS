@@ -1,0 +1,41 @@
+GRAFANA INSTALLATION
+
+You can also install grafana using helm.
+
+First of all add grafana helm-chart repo in your environement by ruuning
+
+helm repo add aliasname repoNameUrl
+
+let aliasname be grafana
+
+The grafana chart repo is
+
+https://grafana.github.io/helm-charts
+
+let 
+
+helm repo add grafana https://grafana.github.io/helm-charts
+
+it will be added. you can verify by running
+
+helm repo ls
+
+run
+
+helm repo update
+
+let us ckeck for grafana chartName by running
+
+ helm search repo grafana
+
+ You will see that the chartName is grafana/grafana
+
+ Let us install grafana by running
+
+ Let us see the values file of this grafana by running
+
+ helm show values grafana/grafana
+
+ Since the serviceType in grafana as show in the values file is clusterIP, we can just go ahead to install grafana because we already install ingress rule which will help user to be able to access the application externally.
+
+helm install grafana grafana/grafana
