@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: prometheus-ingess-rule
+  name: prometheus-grafana-ingess-rule
 spec:
   ingressClassName: nginx
   rules:
@@ -36,7 +36,7 @@ spec:
           service:
             name: grafana
             port:
-              number: 80
+
 
 Make sure you create a dns records for the grafana HOST in order to be able to acess it externally. Also parsze the correct grafana service name and its service 
 port by running
