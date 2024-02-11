@@ -16,7 +16,7 @@ the run
 
 helm repo update
 
-Before you can install any 3rd party application suing him, you have to know that chartname of the application in helm. You can achieve this by running
+Before you can install any 3rd party application using helm, you have to know the chartname of the application in helm. You can achieve this by running
 
 helm search repoName | grep applicationName  
 
@@ -29,26 +29,26 @@ for application performance monitory, we may not need all the components to moni
 
 This is why prof gave us a prometheus-alertmanager file which has been forked in my github.
 
-Since we want to install prometheus-alertmanager prof has configured, let us copy and save the file in our helm environement and name the file  alert.yml
+Let us copy and save the file in our helm environement and name the file  alert.yml
 
-we would have to found the chartname for prometheus-alertmanager  by running
+we would have to found the chartname for prometheus  by running
 
-helm search repoName | grep applicationComponentName
+helm search repoName | grep application
 
 reponame was prometheus
 
-helm search prometheus | prometheus-alertmanager
+helm search repo prometheus | prometheus
 
-You will see  a chartname called   prometheus/prometheus-alertmanager  under  chart
+If you grow back and forth, you You will see  a chartname called   prometheus/prometheus
 
-chartname = prometheus/prometheus-alertmanager
+chartname = prometheus/prometheus
 
-we can now install or deply prometheus b y ruunning
+we can now install or deply prometheus by ruunning
 
 helm install deploymentName chartname -f fileName
 
 let us called the deploy name as apm. it can be any name
 
-helm install apm prometheus/prometheus-alertmanager -f alert.yml
+helm install apm prometheus/prometheus -f alert.yml
 
 The alertmanager file will install prometheus-alertmanager, prometheus-server and others after you run the above command.
