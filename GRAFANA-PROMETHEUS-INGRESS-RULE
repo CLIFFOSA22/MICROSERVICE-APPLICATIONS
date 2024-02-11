@@ -1,0 +1,47 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus-ingess-rule
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: alert.osas-tech.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: prometheus-alertmanager
+            port:
+              number: 9093
+
+  - host: prometheus.osas-tech.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: prometheus-server
+            port:
+              number: 80
+
+  - host: grafana.osas-tech.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 80
+
+Make sure you create a dns records for the grafana HOST in order to be able to acess it externally. Also parsze the correct grafana service name and its service 
+port by running
+
+kubectl get svc -o wide
+
+We addded grafana block to prometheus block because prometheus is the data source for grafana becaise if there is no source, grafana would not have any data 
+to display in form of graphs
