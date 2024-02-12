@@ -1,0 +1,25 @@
+The elasticStack helm repo is 
+
+ https://helm.elastic.co
+
+ helm repo add aliasname https://helm.elastic.co
+
+  let the aliasname be elastic
+
+  helm repo add elastic https://helm.elastic.co
+
+3. update the repo by running 
+
+helm repo update
+
+to verify the addition of the helm-elastic repo, run
+
+helm repo add
+
+This elasticStack helm REPO, you can install EFK (elasticSearch, FileBreats and Kibana) by searching for each of their chartName by running
+
+helm search repo repoName
+
+and then install by running
+
+helm install NAME chartName
